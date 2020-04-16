@@ -290,9 +290,14 @@ getModelYears();
  * For example, if getCarInfoById is invoked with the inventory and the number 1,
  * it will return `This is a Lincoln Navigator`.
 */
-function getCarInfoById(/* code here */) {
-  /* code here */
+function getCarInfoById(array, id) {
+  for(let i = 0; i < array.length; i++){
+    if (i === id - 1){
+      return `This is a ${array[i].car_make} ${array[i].car_model}`;
+    }
+  }
 }
+getCarInfoById()
 
 /**
  * ### Challenge `getOlderCars`
@@ -308,10 +313,16 @@ function getCarInfoById(/* code here */) {
  * with a `car_year` which is at most the given desired max year,
  * in the same order as they appear in the original inventory.
 */
-function getOlderCars(/* code here */) {
-  /* code here */
+function getOlderCars(array, maxYear) {
+  const oldCars = [];
+  for (let i = 0; i < array.length; i++){
+    if (maxYear >= array[i].car_year){
+      oldCars.push(array[i]);
+    }
+  }
+  return oldCars;
 }
-
+getOlderCars();
 /**
  * ### Challenge `getGermanCars`
  * * THIS ONE IS A STRETCH GOAL. ATTEMPT IT ONLY AFTER
@@ -325,9 +336,16 @@ function getOlderCars(/* code here */) {
  * made by either `Audi` or `Mercedes-Benz` or `Volkswagen` or `BMW`,
  * in the same order as they appear in the original inventory.
 */
-function getGermanCars(/* code here */) {
-  /* code here */
+function getGermanCars(array) {
+  const germanCar = [];
+  for(let i = 0; i < array.length; i++){
+    if(array[i].car_make === "Audi" || array[i].car_make === "Mercedes-Benz" || array[i].car_make === "Volkswagen" || array[i].car_make === "BMW"){
+      germanCar.push(array[i]);
+    }
+  }
+  return germanCar;
 }
+getGermanCars()
 
 /**
  * ### Challenge `carMaker`
@@ -342,9 +360,17 @@ function getGermanCars(/* code here */) {
  *         (1) causes the odometer in the object to be increased by the distance,
  *         (2) returns the updated value of the `odometer`.
 */
-function carMaker(/* code here */) {
-  /* code here */
-}
+function carMaker(number) {
+ let carObject = {
+   odometer : number,
+   drive : function(distance){
+     const newOdometer = this.odometer + distance;
+     return carObject.odometer = newOdometer
+   },
+ }
+ return carObject;
+};
+carMaker();
 
 /// ////// END OF CHALLENGE /////////
 /// ////// END OF CHALLENGE /////////
